@@ -9,8 +9,6 @@ import {images, offers} from "@/constants";
 export default function Index() {
     return (
         <SafeAreaView className="flex-1 bg-white">
-
-
             <FlatList
                 data={offers}
                 renderItem={({ item, index }) => {
@@ -21,11 +19,11 @@ export default function Index() {
                                 {( pressed ) => (
                                     <Fragment>
                                         <View className="h-full w-1/2">
-                                            <Image source={item.image} className="size-full" resizeMode="contain" />
+                                            <Image source={item.image} className="w-full h-full" resizeMode="contain" style={{ width: "100%", height: "100%" }}/>
                                         </View>
                                         <View className={cn("offer-card__info", isEven ? 'pl-10' : 'pr-10')}>
                                             <Text className="h1-bold text-white leading-tight">{item.title}</Text>
-                                            <Image source={images.arrowRight} className="size-10" resizeMode="contain" tintColor="#ffffff" />
+                                            <Image source={images.arrowRight} className="w-10 h-10" resizeMode="contain" tintColor="#ffffff" />
 
                                         </View>
                                     </Fragment>
@@ -45,7 +43,6 @@ export default function Index() {
                                 <Image source={images.arrowDown} className="size-3" resizeMode="contain"></Image>
                             </TouchableOpacity>
                         </View>
-
                         <CartButton></CartButton>
 
                     </View>
