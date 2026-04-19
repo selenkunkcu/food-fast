@@ -48,7 +48,9 @@ export const createUser = async({ email, password, name }: CreateUserParams) => 
         });
 
     } catch (e) {
+        console.log("e-- ", e)
         throw new Error(e as string);
+
     }
 }
 
@@ -59,7 +61,10 @@ export const signIn = async ({ email, password }: SignInParams) => {
             password,
         });
     } catch (e) {
+        console.log("e-- ", e)
         throw new Error(e as string);
+
+
     }
 }
 
@@ -77,7 +82,10 @@ export const getCurrentUer = async () => {
         if (!currentUser.rows.length) throw Error;
         return currentUser.rows[0];
     } catch (e) {
+        console.log("e-- ", e)
         throw new Error(e as string);
+
+
 
     }
 }
