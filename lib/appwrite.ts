@@ -6,7 +6,12 @@ export const appwriteConfig = {
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
     platform: "com.selen.foodfast",
     databaseId: '69c63cf800166bb31272',
-    userTableId: 'user'
+    bucketId: '69ee306300358fae6f8c',
+    userTableId: 'user',
+    categoriesTableId: 'categories',
+    menuTableId: 'menu',
+    customizationsTableId: 'customizations',
+    menuCustomizationsTableId: 'menuCustomizations',
 }
 
 export const client = new Client();
