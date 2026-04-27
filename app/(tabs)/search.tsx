@@ -10,6 +10,8 @@ import CartButton from "@/components/CartButton";
 import MenuCard from "@/components/MenuCard";
 import {MenuItem} from "@/type";
 import Filter from "@/components/Filter";
+import SearchBar from "@/components/SearchBar";
+
 
 
 export default function Search() {
@@ -48,9 +50,9 @@ export default function Search() {
                             </View>
                             <CartButton/>
                         </View>
-                        <Text>Search Input</Text>
-                        <Filter categories={categories!}/>
 
+                        <SearchBar/>
+                        <Filter categories={categories!}/>
                     </View>
                 )}
                 ListEmptyComponent={() => !loading && <Text>No results</Text>}
