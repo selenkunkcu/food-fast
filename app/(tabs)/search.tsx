@@ -2,11 +2,13 @@ import {View, Text, Button, FlatList} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {useLocalSearchParams} from "expo-router";
 import {useEffect} from "react";
+import cn from "clsx";
 
 import useAppwrite from "@/lib/useAppwrite";
 import {getCategories, getMenu} from "@/lib/appwrite";
 import CartButton from "@/components/CartButton";
-import cn from "clsx";
+import MenuCard from "@/components/MenuCard";
+import {MenuItem} from "@/type";
 
 
 export default function Search() {
@@ -22,11 +24,12 @@ export default function Search() {
 
     return (
         <SafeAreaView className="bg-white h-full">
+
             <FlatList data={data} renderItem={({ item, index }) => {
                 const isFirstRightColItem = index % 2 == 0;
                 return (
                     <View className={cn("flex-1 max-w-[48%]", !isFirstRightColItem ? "mt-10" : "mt-0")}>
-                        <Text>Menu Card</Text>
+                        <MenuCard item={item as MenuItem} />
                     </View>
                 )}}
                 keyExtractor={item => item.$id}
