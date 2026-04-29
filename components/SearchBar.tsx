@@ -1,24 +1,29 @@
 import {TextInput, TouchableOpacity, View, Image} from "react-native";
 import {useState} from "react";
 import {router, useLocalSearchParams} from "expo-router";
-import {log} from "@expo/fingerprint/cli/build/utils/log";
 import {images} from "@/constants";
 import {useDebouncedCallback} from "use-debounce";
-import is from "@sindresorhus/is";
 
 const SearchBar = () => {
     const params = useLocalSearchParams<{ query?: string }>()
     const [query, setQuery] = useState(params.query);
 
+    const debouncedSearch = useDebouncedCallback((text: string) => {
+        router.setParams({
+            query: text.trim() || undefined,
+        });
+    }, 500);
+
     const handleSearch = (text: string) => {
         setQuery(text);
-
-        if (!text) router.setParams({ query: undefined })
+        debouncedSearch(text);
     };
 
     const handleSubmit = () => {
-        if (!query?.trim()) router.setParams({ query })
-    }
+        router.setParams({
+            query: query?.trim() || undefined,
+        });
+    };
 
     return (
         <View className="searchbar">
